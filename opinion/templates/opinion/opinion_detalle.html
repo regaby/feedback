@@ -1,0 +1,17 @@
+{% extends 'opinion/base.html' %}
+{% block titulo %}Detalle - Opinion{% endblock titulo %}
+{% block contenido %}
+    <h1>Nombre: {{opinion.nombre}} </h1>
+    <h2>Puntaje: {{opinion.puntaje}} </h2>
+    <p>Opinion: {{ opinion.opinion }}</p>
+    {% if es_favorito %}
+        <p>Mi Favorito!</p>
+    {% else %}
+        <form action="/opinion/favorito" method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="opinion_id" value="{{ opinion.id }}">
+            <button>Favorito</button>
+        </form>
+    {% endif %}
+{% endblock contenido %}
+

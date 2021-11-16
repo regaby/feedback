@@ -1,0 +1,10 @@
+{% extends 'opinion/base.html' %}
+{% block titulo %}Todas las opiniones{% endblock titulo %}
+{% block contenido %}
+    <ul>
+        {% for opinion in opiniones  %}
+            <li>{{ opinion.nombre }} - Puntaje: {{ opinion.puntaje }}</li>
+        {% endfor %}
+    </ul>
+{% endblock contenido %}
+

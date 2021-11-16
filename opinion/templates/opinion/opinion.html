@@ -1,0 +1,21 @@
+{% extends 'opinion/base.html' %}
+{% block titulo %}Ingrese su opinion{% endblock titulo %}
+{% block contenido %}
+    <h1>Ingrese su opinion</h1>
+    <form action="/" method="POST">
+        {% csrf_token %}
+        {% comment %} {% if error %}
+            <p>Por favor complete el nombre en el formulario</p>
+        {% endif %}
+        <label for="nombre">Nombre</label>
+        <input type="text" name="nombre" id="nombre"> {% endcomment %}
+        <div class="form-control">
+            {% for campo in form %}
+                {{ campo.label_tag }}
+                {{ campo }}
+                {{ campo.errors }}
+            {% endfor %}
+            <button type="submit">Enviar</button>
+        </div>
+    </form>
+{% endblock contenido %}
